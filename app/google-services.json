@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "804256695305",
+    "project_id": "cityar-78578",
+      "firebase_url": "https://cityar-78578-default-rtdb.europe-west1.firebasedatabase.app",
+    "storage_bucket": "cityar-78578.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804256695305:android:7bfc5e92735dd272fd64d8",
+        "android_client_info": {
+          "package_name": "com.example.cityarr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804256695305-j32dvbvq22h85r6dd2cfi82okutf67ke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSYM4mVmkSQAltoKiIFhP8PoB212NP16k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804256695305-j32dvbvq22h85r6dd2cfi82okutf67ke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

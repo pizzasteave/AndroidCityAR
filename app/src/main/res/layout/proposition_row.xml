@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="contentDescription"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="3dp">
+
+    <!-- Les CardView possèdent des attributs supplémentaires dont
+         - cardBackgroundColor
+         - cardElevation pour l'élévation (donc aussi l'ombre)
+         - cardCornerRadius pour arrondir les angles
+     -->
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:clickable="true"
+        android:focusable="true">
+
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_alignTop="@+id/nameTV"
+                android:layout_alignBottom="@+id/nameTV"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/street"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds = "true"
+
+/>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="230dp"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+
+            <ImageView
+                android:id="@+id/footerBackground"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignTop="@+id/nameTV"
+                android:layout_alignBottom="@+id/nameTV"
+                android:layout_alignParentStart="true"
+                android:scaleType="fitXY"
+                android:background="#FF7600"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+
+             />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" >
+                <LinearLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="7dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="14"
+                        android:text="PISTE CYCLABLE A ......"
+                        android:textColor="#FFFF" />
+
+                    <Button
+                        android:id="@+id/share_button"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#17E400"
+                        android:onClick="validate"
+                        android:text="validee"
+                        android:textColor="#ffff"
+                        android:textSize="12sp" />
+
+
+
+                </LinearLayout>
+                <!-- Right side spacer -->
+
+                <Button
+                    android:id="@+id/reaction"
+                    style="@style/Widget.App.Button.mine"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#FFFF"
+                    android:layoutDirection="rtl"
+                    android:text="20"
+                    android:textSize="16sp"
+                    app:iconSize="20dp"
+                    android:gravity="left|center"
+                    android:textColor="@color/orange"
+                    app:icon="@drawable/heart"
+                    app:iconTintMode="multiply"
+
+                    />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+</androidx.cardview.widget.CardView>
