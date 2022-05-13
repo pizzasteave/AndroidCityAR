@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cityarr.R;
 import com.example.cityarr.entity.Proposition;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +53,14 @@ public class AdapterProp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         switch (getItemViewType(position)) {
             case TYPE_ITEM:
                 Proposition proposition = mPropositionList.get(position);
-
+                System.out.println(proposition.getImageURL());
                 ((PropositionViewHolder) holder).title.setText(proposition.gettitle());
+                   Picasso.get()
+                   .load(proposition.getImageURL())
+                   .placeholder(R.mipmap.ic_launcher)
+                   .fit()
+                   .centerCrop()
+                   .into(((PropositionViewHolder) holder).image);
                 break;
             case TYPE_LOADING:
                 // Do nothing
@@ -75,7 +83,9 @@ public class AdapterProp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      */
 
     public void add(Proposition proposition) {
+        System.out.println("inside lol");
         mPropositionList.add(proposition);
+
         notifyItemInserted(mPropositionList.size() - 1);
     }
 
@@ -93,10 +103,11 @@ public class AdapterProp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class PropositionViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
-
+        public ImageView image;
         public PropositionViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
+            image = view.findViewById(R.id.imageProp);
         }
 
     }

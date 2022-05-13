@@ -22,6 +22,11 @@ import com.example.cityarr.entity.Proposition;
 import com.example.cityarr.Adapter.AdapterProp;
 import com.example.cityarr.touchListner.RecyclerTouchListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +36,8 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
     private AdapterProp mAdapter;
     private RecyclerView mRecyclerView;
     private FloatingActionButton mAddPropositionBtn ;
-    private List<Proposition> propositionsList  = new ArrayList<Proposition>();
-
+    private List<Proposition> propositionsList ;
+    private DatabaseReference mDatabaseRef;
 
     // a static variable to get a reference of our application context
     public static Context contextOfApplication;
@@ -74,27 +79,49 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
     }
 
     private void initData() {
-
         mAdapter = new AdapterProp(getApplicationContext());
-        mAdapter.addAll(propositionsList);
-        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(MesProposition.this);
-        mRecyclerView.setLayoutManager(mLinearLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
+        mDatabaseRef  = FirebaseDatabase.getInstance().getReference("Proposition");
 
-                Toast.makeText(MesProposition.this,"click" + position , Toast.LENGTH_LONG).show();
+        propositionsList = new ArrayList<Proposition>() ;
+
+        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Proposition proposition = postSnapshot.getValue(Proposition.class);
+                    System.out.println(proposition.gettitle());
+                    propositionsList.add(proposition);
+                }
+
+
+                System.out.println("9bal btarf");
+                mAdapter.addAll(propositionsList);
+                LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(MesProposition.this);
+                mRecyclerView.setLayoutManager(mLinearLayoutManager);
+                mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                mRecyclerView.setAdapter(mAdapter);
+                mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
+                    @Override
+                    public void onClick(View view, int position) {
+
+                        Toast.makeText(MesProposition.this,"click" + position , Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onLongClick(View view, int position) {
+
+                        Toast.makeText(MesProposition.this,"Longclick" + position , Toast.LENGTH_LONG).show();
+
+                    }
+                }));
             }
 
             @Override
-            public void onLongClick(View view, int position) {
-
-                Toast.makeText(MesProposition.this,"Longclick" + position , Toast.LENGTH_LONG).show();
-
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        }));
+        });
+
 
     }
 

@@ -190,5 +190,4 @@ public class AddPropositionDialog extends Dialog {
     }
 
 
-
 }
