@@ -28,7 +28,7 @@
             android:layout_height="20dp" />
 
         <EditText
-            android:id="@+id/EmailAdress"
+            android:id="@+id/gov"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -44,7 +44,7 @@
             android:layout_height="20dp" />
 
         <EditText
-            android:id="@+id/mail"
+            android:id="@+id/min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -108,7 +108,7 @@
             android:layout_height="20dp" />
 
         <Button
-            android:id="@+id/repass"
+            android:id="@+id/go"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/roundstylee"

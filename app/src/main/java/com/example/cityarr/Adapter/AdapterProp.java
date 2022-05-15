@@ -26,7 +26,6 @@ public class AdapterProp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context mContext ;
 
     public AdapterProp(Context context) {
-        mPropositionList = new ArrayList<>();
         this.mContext = context;
     }
 
@@ -83,17 +82,20 @@ public class AdapterProp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      */
 
     public void add(Proposition proposition) {
-        System.out.println("inside lol");
         mPropositionList.add(proposition);
 
         notifyItemInserted(mPropositionList.size() - 1);
     }
 
     public void addAll(List<Proposition> propositionsList) {
+
+        mPropositionList = new ArrayList<>();
         if(propositionsList != null && !propositionsList.isEmpty()) {
             for (Proposition proposition : propositionsList) {
                 add(proposition);
+                System.out.println(proposition.gettitle());
             }
+            propositionsList.clear();
         }
     }
 

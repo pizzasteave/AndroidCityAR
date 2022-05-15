@@ -11,7 +11,7 @@
         android:id="@+id/imageView"
         android:layout_width="265dp"
         android:layout_height="152dp"
-        app:layout_constraintBottom_toTopOf="@+id/EmailAdress"
+        app:layout_constraintBottom_toTopOf="@+id/gov"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/EmailAdress"
+        android:id="@+id/gov"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#707070"
@@ -44,21 +44,21 @@
         android:hint="Mot de pass"
         android:inputType="textPassword"
         android:textColorHint="#CFCFCF"
-        app:layout_constraintBottom_toTopOf="@+id/repass"
+        app:layout_constraintBottom_toTopOf="@+id/go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.935" />
 
     <Button
-        android:id="@+id/repass"
+        android:id="@+id/go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/roundstylee"
         android:backgroundTint="#FF7600"
         android:text="Login"
         android:textColor="#311B92"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:circularflow_radiusInDP="50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +99,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="1dp"
-        android:visibility="gone">
+        android:visibility="invisible">
 
 
         <ImageView

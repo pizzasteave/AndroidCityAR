@@ -93,9 +93,8 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
                     propositionsList.add(proposition);
                 }
 
-
-                System.out.println("9bal btarf");
                 mAdapter.addAll(propositionsList);
+                propositionsList.clear();
                 LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(MesProposition.this);
                 mRecyclerView.setLayoutManager(mLinearLayoutManager);
                 mRecyclerView.setItemAnimator(new DefaultItemAnimator());
