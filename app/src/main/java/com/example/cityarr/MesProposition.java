@@ -1,18 +1,16 @@
 package com.example.cityarr;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +20,7 @@ import com.example.cityarr.entity.Proposition;
 import com.example.cityarr.Adapter.AdapterProp;
 import com.example.cityarr.touchListner.RecyclerTouchListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +36,11 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
     private RecyclerView mRecyclerView;
     private FloatingActionButton mAddPropositionBtn ;
     private List<Proposition> propositionsList ;
+    private List<String> myPropositionList;
+
     private DatabaseReference mDatabaseRef;
+    private DatabaseReference mDatabaseRefChild;
+    private DatabaseReference mDatabaseRef2;
 
     // a static variable to get a reference of our application context
     public static Context contextOfApplication;
@@ -55,7 +58,7 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
         //fragment pb
         contextOfApplication = getApplicationContext();
 
-        setContentView(R.layout.mes_proposition);
+        setContentView(R.layout.les_proposition);
 
         initView();
         initEvent();
@@ -68,29 +71,62 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
         mAddPropositionBtn = findViewById(R.id.addPropositionBtn);
     }
 
+
     private void initEvent() {
         mAddPropositionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddPropositionDialog dialog = new AddPropositionDialog(MesProposition.this,MesProposition.this, MesProposition.this);
+                AddPropositionDialog dialog = new AddPropositionDialog(MesProposition.this, MesProposition.this, MesProposition.this);
                 dialog.show();
             }
         });
     }
 
+
     private void initData() {
         mAdapter = new AdapterProp(getApplicationContext());
-        mDatabaseRef  = FirebaseDatabase.getInstance().getReference("Proposition");
 
-        propositionsList = new ArrayList<Proposition>() ;
 
-        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        String id = fAuth.getCurrentUser().getUid();
+
+        myPropositionList = new ArrayList<String>() ;
+        mDatabaseRefChild  = FirebaseDatabase.getInstance().getReference("UserPP").child(id);
+
+        mDatabaseRefChild.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    myPropositionList.add(postSnapshot.getValue().toString());
+                    System.out.println("added" + postSnapshot.getValue().toString());
+                }
+
+                addMyProp();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void addMyProp(){
+        mDatabaseRef2  = FirebaseDatabase.getInstance().getReference("Proposition");
+        propositionsList = new ArrayList<>() ;
+
+        mDatabaseRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Proposition proposition = postSnapshot.getValue(Proposition.class);
-                    System.out.println(proposition.gettitle());
-                    propositionsList.add(proposition);
+
+                    System.out.println(postSnapshot.getKey() +"key");
+                    if(myPropositionList.contains(postSnapshot.getKey())) {
+
+                        System.out.println("yes");
+                        Proposition proposition = postSnapshot.getValue(Proposition.class);
+                        propositionsList.add(proposition);
+                    }
                 }
 
                 mAdapter.addAll(propositionsList);
@@ -104,6 +140,8 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
                     public void onClick(View view, int position) {
 
                         Toast.makeText(MesProposition.this,"click" + position , Toast.LENGTH_LONG).show();
+
+                        mAdapter.remove(position);
                     }
 
                     @Override
@@ -114,13 +152,11 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
                     }
                 }));
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 

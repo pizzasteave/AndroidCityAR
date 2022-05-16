@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.cityarr.DAO.DaoProposition;
-import com.example.cityarr.MesProposition;
 import com.example.cityarr.R;
 import com.example.cityarr.entity.Proposition;
 import com.google.android.material.textfield.TextInputLayout;

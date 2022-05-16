@@ -4,20 +4,27 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cityarr.DAO.DaoProposition;
 import com.example.cityarr.R;
 import com.example.cityarr.entity.Proposition;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterProp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
 
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_LOADING = 1;
@@ -52,7 +59,6 @@ public class AdapterProp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         switch (getItemViewType(position)) {
             case TYPE_ITEM:
                 Proposition proposition = mPropositionList.get(position);
-                System.out.println(proposition.getImageURL());
                 ((PropositionViewHolder) holder).title.setText(proposition.gettitle());
                    Picasso.get()
                    .load(proposition.getImageURL())
@@ -99,6 +105,21 @@ public class AdapterProp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    public void remove(int position) {
+        if (position > -1) {
+            Proposition currentProp = mPropositionList.get(position);
+
+            DaoProposition dao = new DaoProposition();
+            dao.removeFromFireBase(currentProp.getId());
+
+            mPropositionList.remove(position);
+            notifyItemRemoved(position);
+
+
+        }
+    }
+
+
     /**
      * -----------------------------------  ViewHolder ------------------------------------------
      */
@@ -106,10 +127,12 @@ public class AdapterProp extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public class PropositionViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
         public ImageView image;
+        public Button deleteBtn;
         public PropositionViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
             image = view.findViewById(R.id.imageProp);
+            deleteBtn = view.findViewById(R.id.delete);
         }
 
     }

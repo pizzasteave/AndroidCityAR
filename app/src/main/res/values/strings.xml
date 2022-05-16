@@ -2,4 +2,66 @@
     <string name="app_name">CityARR</string>
     <string name="button">Button</string>
     <string name="error_message_first_name">Donner votre nom</string>
+        <string-array name="Gov_array">
+            <item>Tunis</item>
+            <item>Manouba</item>
+            <item>Ben Arous</item>
+            <item>Ariana</item>
+            <item>Nabeul</item>
+            <item>Bizerte</item>
+            <item>Zaghouan</item>
+            <item>Sousse</item>
+            <item>Monastir</item>
+            <item>Mahdia</item>
+            <item>Kairouan</item>
+            <item>Kasserine</item>
+            <item>Sidi Bouzid</item>
+            <item>Kef</item>
+            <item>Jendouba</item>
+            <item>Siliana</item>
+            <item>Gafsa</item>
+            <item>Tozeur</item>
+            <item>GabÃ¨s</item>
+            <item>Medenine</item>
+            <item>Kebili</item>
+            <item>Tataouine</item>
+        </string-array>
+
+    <string-array name="Mun_array">
+        <item>Tunis</item>
+        <item>Le Kram</item>
+        <item>Carthage</item>
+        <item>La Marsa</item>
+        <item>La Goulette</item>
+        <item>Sidi Bou Said</item>
+        <item>Bardo</item>
+        <item>Sidi Hassine</item>
+        <item>Ariana</item>
+        <item>Soukra</item>
+        <item>Raoued</item>
+        <item>Mnihla</item>
+        <item>Cité Ettadhamen</item>
+        <item>Sidi Thabet</item>
+        <item>Kalaat Andalous</item>
+        <item>Manouba</item>
+        <item>Denden</item>
+        <item>Djedaida</item>
+        <item>Tebourba</item>
+        <item>Mornaguia</item>
+        <item>Battan</item>
+        <item>Borj El Amri</item>
+        <item>Ben Arous</item>
+        <item>Megrine</item>
+        <item>El Mourouj</item>
+        <item>Rades</item>
+        <item>Ezzahra</item>
+        <item>Hammam Lif</item>
+        <item>Boumhel</item>
+        <item>Hammam Echatt</item>
+        <item>Mornag</item>
+        <item>Naassen</item>
+        <item>Mehamdia</item>
+        <item>Fouchana</item>
+        <item>Khelidia</item>
+    </string-array>
 </resources>

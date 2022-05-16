@@ -28,32 +28,34 @@
             android:layout_height="20dp" />
 
         <EditText
-            android:id="@+id/gov"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:layout_width="237dp"
+            android:layout_height="47dp"
             android:layout_gravity="center"
             android:backgroundTint="#707070"
             android:ems="10"
             android:gravity="left"
             android:hint="Nom d'utilisateur"
             android:inputType="text"
-            android:textColorHint="#CFCFCF" />
+            android:textColorHint="#CFCFCF"
+            android:textColor="#CFCFCF"/>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
         <EditText
-            android:id="@+id/min"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:layout_width="237dp"
+            android:layout_height="47dp"
             android:layout_gravity="center"
             android:backgroundTint="#707070"
             android:ems="10"
             android:gravity="left"
             android:hint="E-mail"
             android:inputType="textEmailAddress"
-            android:textColorHint="#CFCFCF" />
+            android:textColorHint="#CFCFCF"
+            android:textColor="#CFCFCF"/>
 
         <Space
             android:layout_width="match_parent"
@@ -61,15 +63,16 @@
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="237dp"
+            android:layout_height="47dp"
             android:layout_gravity="center"
             android:backgroundTint="#707070"
             android:ems="10"
             android:gravity="left"
             android:hint="Mot de passe"
             android:inputType="textPassword"
-            android:textColorHint="#CFCFCF" />
+            android:textColorHint="#CFCFCF"
+            android:textColor="#CFCFCF"/>
 
         <Space
             android:layout_width="match_parent"
@@ -77,15 +80,16 @@
 
         <EditText
             android:id="@+id/password2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="237dp"
+            android:layout_height="47dp"
             android:layout_gravity="center"
             android:backgroundTint="#707070"
             android:ems="10"
             android:gravity="left"
             android:hint="Confirmer le mot de passe"
             android:inputType="textPassword"
-            android:textColorHint="#CFCFCF" />
+            android:textColorHint="#CFCFCF"
+            android:textColor="#CFCFCF"/>
 
         <Space
             android:layout_width="match_parent"
@@ -93,7 +97,7 @@
 
         <EditText
             android:id="@+id/telephone"
-            android:layout_width="211dp"
+            android:layout_width="237dp"
             android:layout_height="47dp"
             android:layout_gravity="center"
             android:backgroundTint="#707070"
@@ -101,12 +105,15 @@
             android:gravity="left"
             android:hint="Telephone"
             android:inputType="phone"
-            android:textColorHint="#CFCFCF" />
+            android:textColorHint="#CFCFCF"
+            android:textColor="#CFCFCF"/>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
-
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
         <Button
             android:id="@+id/go"
             android:layout_width="wrap_content"

@@ -2,7 +2,6 @@ package com.example.cityarr;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,8 +22,8 @@ public class SignUp extends AppCompatActivity {
 
 
         //get references
-        EditText firstName = findViewById(R.id.gov);
-        EditText mail=findViewById(R.id.min);
+        EditText firstName = findViewById(R.id.name);
+        EditText mail=findViewById(R.id.email);
         EditText pass=findViewById(R.id.password);
         EditText repass=findViewById(R.id.password2);
         EditText phone=findViewById(R.id.telephone);
@@ -46,6 +45,11 @@ public class SignUp extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(FirstName)){
                     firstName.setError("first name is Required");
+                    return;
+                }
+                // Check if email id is valid    or not
+                if (!isEmailValid(Email)){
+                    mail.setError("Not an Email");
                     return;
                 }
 
@@ -80,20 +84,19 @@ public class SignUp extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SignUp2.class);
 
                 pairs = new Pair[4];
-                pairs[0] = new Pair<View, String>(firstName, "EmailAdress");
-                pairs[1] = new Pair<View, String>(mail, "mail");
-                pairs[2] = new Pair<View, String>(pass, "password");
-                pairs[3] = new Pair<View, String>(repass, "password2");
-                pairs[4] = new Pair<View, String>(phone, "telephone");
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SignUp.this, pairs);
-                    startActivity(intent, options.toBundle());
-                } else {
-                    startActivity(intent);
-                }
+                pairs[0] = new Pair<String, String>(FirstName.toString(), "name");
+                pairs[1] = new Pair<String, String>(Email.toString(), "email");
+                pairs[2] = new Pair<String, String>(Password.toString(), "password");
+                pairs[3] = new Pair<String, String>(Phone.toString(), "telephone");
+
+                startActivity(intent);
 
             }
         });
 
+    }
+
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

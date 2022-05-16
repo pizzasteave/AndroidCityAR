@@ -13,10 +13,13 @@
             android:name=".ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".SignUp2"
             android:exported="false" />
         <activity
             android:name=".Menu"
+            android:exported="false" />
+        <activity
+            android:name=".MesProposition"
             android:exported="false" />
         <activity
             android:name=".SignUp"
@@ -25,7 +28,7 @@
             android:name=".LogIn"
             android:exported="false" />
         <activity
-            android:name=".MesProposition"
+            android:name=".LesProposition"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

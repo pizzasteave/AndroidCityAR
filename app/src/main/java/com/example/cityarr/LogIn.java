@@ -29,7 +29,7 @@ public class LogIn extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         Button btn=findViewById(R.id.go);
-        EditText email=findViewById(R.id.gov);
+        EditText email=findViewById(R.id.name);
         EditText password=findViewById(R.id.telephone);
         TextView text=findViewById(R.id.textView);
         FrameLayout frame=findViewById(R.id.frame);
