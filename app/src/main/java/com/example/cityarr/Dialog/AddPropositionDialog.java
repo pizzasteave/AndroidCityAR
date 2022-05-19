@@ -181,6 +181,8 @@ public class AddPropositionDialog extends Dialog {
     }
 
 
+
+
     public interface AddPropositionCallBack
     {
         void onImageAdded(Intent intent , ImageView propositionPic);

@@ -123,7 +123,6 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
                     System.out.println(postSnapshot.getKey() +"key");
                     if(myPropositionList.contains(postSnapshot.getKey())) {
 
-                        System.out.println("yes");
                         Proposition proposition = postSnapshot.getValue(Proposition.class);
                         propositionsList.add(proposition);
                     }
@@ -177,6 +176,8 @@ public class MesProposition extends AppCompatActivity implements AddPropositionD
             AddPropositionDialog.image = image;
         }
     }
+
+
 
     @Override
     public void onPropositionAdded(Proposition proposition) {

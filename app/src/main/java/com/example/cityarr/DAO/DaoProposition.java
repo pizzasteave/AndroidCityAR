@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 
 import com.example.cityarr.Dialog.AddPropositionDialog;
 import com.example.cityarr.LesProposition;
+import com.example.cityarr.MesProposition;
 import com.example.cityarr.entity.Proposition;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -51,7 +52,7 @@ public class DaoProposition {
     }
 
     public Task<Void> upload() {
-        Context applicationContext = LesProposition.getContextOfApplication();
+        Context applicationContext = MesProposition.getContextOfApplication();
 
         StorageReference storageReference2 = storageReference.child(System.currentTimeMillis() + "." + GetFileExtension(AddPropositionDialog.image));
         storageReference2.putFile(AddPropositionDialog.image)
@@ -129,14 +130,13 @@ public class DaoProposition {
         });
 
 
-
         return null;
 
     }
 
 
     public String GetFileExtension(Uri uri) {
-        Context applicationContext = LesProposition.getContextOfApplication();
+        Context applicationContext = MesProposition.getContextOfApplication();
         ContentResolver contentResolver = applicationContext.getContentResolver();
 
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();

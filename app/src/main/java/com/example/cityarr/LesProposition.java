@@ -51,9 +51,6 @@ public class LesProposition extends AppCompatActivity implements AddPropositionD
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //fragment pb
-        contextOfApplication = getApplicationContext();
-
         setContentView(R.layout.mes_proposition);
 
         initView();
